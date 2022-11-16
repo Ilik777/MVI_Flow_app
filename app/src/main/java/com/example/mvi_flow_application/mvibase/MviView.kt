@@ -1,9 +1,8 @@
 package com.example.mvi_flow_application.mvibase
 
-import kotlinx.coroutines.flow.Flow
+interface MviView<S : MviViewState, E: MviSideEffect> {
 
-interface MviView<I : MviIntent, in S : MviViewState> {
+    fun render(state: S)
 
-	fun intents(): Flow<I>
-	fun render(state: S)
+    fun handleSideEffect(sideEffect: E)
 }

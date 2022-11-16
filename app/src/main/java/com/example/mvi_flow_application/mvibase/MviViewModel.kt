@@ -1,9 +1,14 @@
 package com.example.mvi_flow_application.mvibase
 
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.LiveData
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 
-interface MviViewModel<I : MviIntent, S : MviViewState> {
+interface MviViewModel<I : MviIntent, S : MviViewState, E : MviSideEffect> {
+    val states: LiveData<S>
+    val stateFlow: StateFlow<S>
+    val sideEffect: SharedFlow<E>
 
-	fun processIntents(intents: Flow<I>)
-	fun states(): Flow<S>
+    fun onIntentCalled(intent: I)
 }

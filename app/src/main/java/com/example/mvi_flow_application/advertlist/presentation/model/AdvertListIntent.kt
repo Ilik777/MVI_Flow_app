@@ -1,4 +1,4 @@
-package com.example.mvi_flow_application.advertlist
+package com.example.mvi_flow_application.advertlist.presentation.model
 
 import com.example.mvi_flow_application.mvibase.MviIntent
 
@@ -8,5 +8,9 @@ sealed class AdvertListIntent : MviIntent {
 
     data class OpenAdvertDetails(
         val advertViewData: AdvertViewData
+    ) : AdvertListIntent()
+
+    data class DeleteAdvertDetails(
+            val advertViewData: AdvertViewData
     ) : AdvertListIntent()
 }
